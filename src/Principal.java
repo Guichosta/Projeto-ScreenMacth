@@ -14,4 +14,5 @@ public class Principal {
         System.out.println(meuFilme.totalDeAvaliacao);
         System.out.println(meuFilme.mediaDasAvaliacoes());
     }
+
 }

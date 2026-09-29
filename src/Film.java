@@ -21,4 +21,5 @@ public class Film {
     double mediaDasAvaliacoes(){
         return somaDasAvaliacoes / totalDeAvaliacao;
     }
+
 }
