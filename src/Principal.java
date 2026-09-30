@@ -1,6 +1,8 @@
+import br.com.guichosta.screenmatch.calculo.CalculadoraDeTempo;
+import br.com.guichosta.screenmatch.calculo.FiltroDeRecomendacao;
+import br.com.guichosta.screenmatch.modelos.Episodios;
 import br.com.guichosta.screenmatch.modelos.Film;
 import br.com.guichosta.screenmatch.modelos.Serie;
-import br.com.guichosta.screenmatch.modelos.Titulo;
 
 public class Principal {
     public static void main(String[] args) {
@@ -16,10 +18,10 @@ public class Principal {
         meuFilme.avalia(4);
         meuFilme.exibeFichaTecnica();
         System.out.println("Filme: " + meuFilme.getNome());
-        System.out.println("Lançamento: " + meuFilme.getAnoDeLancamento());
-        System.out.println("Duração: " + meuFilme.getDuracaoEmMinutos() + " minutos");
-        System.out.println("Nota: " + meuFilme.mediaDasAvaliacoes());
-        System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacao());
+        //System.out.println("Lançamento: " + meuFilme.getAnoDeLancamento());
+        //System.out.println("Duração: " + meuFilme.getDuracaoEmMinutos() + " minutos");
+        //System.out.println("Nota: " + meuFilme.mediaDasAvaliacoes());
+        //System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacao());
         //System.out.println(meuFilme.somaDasAvaliacoes); não usavel pro causa do "private" ou modificadores de acesso
 
 
@@ -31,6 +33,25 @@ public class Principal {
         lost.setTemporadas(10);
         lost.setMinutosPorEpisodios(50);
         System.out.println("Duração: " + lost.getDuracaoEmMinutos());
-    }
 
+        Film outroFilme = new Film();
+        outroFilme.setNome("Outro filme");
+        outroFilme.setDuracaoEmMinutos(200);
+        outroFilme.setAnoDeLancamento(2000);
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(lost);
+        System.out.println(calculadora.getTempoTotal());
+
+        FiltroDeRecomendacao filtro = new FiltroDeRecomendacao();
+        filtro.filtra(meuFilme);
+
+        Episodios episodios = new Episodios();
+        episodios.setNumero(1);
+        episodios.setSerie(lost);
+        episodios.setTotalVisualizacoes(300);
+        filtro.filtra(episodios);
+    }
 }

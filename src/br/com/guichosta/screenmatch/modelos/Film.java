@@ -1,6 +1,8 @@
 package br.com.guichosta.screenmatch.modelos;
 
-public class Film extends Titulo{
+import br.com.guichosta.screenmatch.calculo.Classificacao;
+
+public class Film extends Titulo implements Classificacao {
     private String diretor;
 
     public void setDiretor(String diretor) {
@@ -9,5 +11,10 @@ public class Film extends Titulo{
 
     public String getDiretor() {
         return diretor;
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int) mediaDasAvaliacoes() / 2;
     }
 }

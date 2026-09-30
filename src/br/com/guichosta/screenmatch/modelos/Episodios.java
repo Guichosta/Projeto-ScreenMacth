@@ -1,0 +1,51 @@
+package br.com.guichosta.screenmatch.modelos;
+
+import br.com.guichosta.screenmatch.calculo.Classificacao;
+
+public class Episodios implements Classificacao {
+    private int numero;
+    private String nome;
+    private Serie serie;
+    private int totalVisualizacoes;
+
+    public int getTotalVisualizacoes() {
+        return totalVisualizacoes;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setTotalVisualizacoes(int totalVisualizacoes) {
+        this.totalVisualizacoes = totalVisualizacoes;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
+    @Override
+    public int getClassificacao() {
+        if(totalVisualizacoes >= 100){
+            return 4;
+        }else{
+            return 2;
+        }
+    }
+}
